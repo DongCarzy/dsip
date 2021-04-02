@@ -61,6 +61,6 @@ public class SipRequestHandler extends SimpleChannelInboundHandler<FullSipReques
         }
 
         // 异步执行
-        DispatchHandler.Companion.getINSTANCE().handler(msg, ctx.channel());
+        DispatchHandler.INSTANCE.handler(msg, ctx.channel());
     }
 }

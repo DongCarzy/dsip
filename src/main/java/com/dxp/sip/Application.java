@@ -40,7 +40,8 @@ public class Application {
     public void startUdp() {
         Bootstrap b = new Bootstrap();
         b.group(UDP_GROUP)
-                .channel(NioDatagramChannel.class) // 关闭广播
+                // 关闭广播
+                .channel(NioDatagramChannel.class)
                 .option(ChannelOption.SO_BROADCAST, false)
                 .handler(new ChannelInitializer<NioDatagramChannel>() {
                     @Override
