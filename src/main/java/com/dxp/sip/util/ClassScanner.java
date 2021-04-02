@@ -1,8 +1,5 @@
 package com.dxp.sip.util;
 
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.Throws;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

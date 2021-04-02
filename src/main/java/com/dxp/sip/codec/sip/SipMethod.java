@@ -91,7 +91,7 @@ public class SipMethod implements Comparable<SipMethod> {
     private static final EnumNameMap<SipMethod> METHOD_MAP;
 
     static {
-        METHOD_MAP = new EnumNameMap<>(
+        METHOD_MAP = new SipMethod.EnumNameMap<>(
                 new EnumNameMap.Node<>(REGISTER.toString(), REGISTER),
                 new EnumNameMap.Node<>(INVITE.toString(), INVITE),
                 new EnumNameMap.Node<>(ACK.toString(), ACK),
@@ -185,7 +185,6 @@ public class SipMethod implements Comparable<SipMethod> {
         return name().compareTo(o.name());
     }
 
-    @SuppressWarnings("unchecked")
     private static final class EnumNameMap<T> {
         private final EnumNameMap.Node<T>[] values;
         private final int valuesMask;
