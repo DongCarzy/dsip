@@ -5,8 +5,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.DecoderResult;
 import io.netty.handler.codec.TooLongFrameException;
-import io.netty.handler.codec.http.DefaultHttpContent;
-import io.netty.handler.codec.http.HttpConstants;
 import io.netty.util.ByteProcessor;
 import io.netty.util.internal.AppendableCharSequence;
 
@@ -217,7 +215,7 @@ public class SipObjectTcpDecoder extends ByteToMessageDecoder {
                     out.add(new DefaultLastSipContent(content, validateHeaders));
                     resetNow();
                 } else {
-                    out.add(new DefaultHttpContent(content));
+                    out.add(new DefaultSipContent(content));
                 }
                 return;
             }
@@ -575,10 +573,10 @@ public class SipObjectTcpDecoder extends ByteToMessageDecoder {
         @Override
         public boolean process(byte value) throws Exception {
             char nextByte = (char) (value & 0xFF);
-            if (nextByte == HttpConstants.LF) {
+            if (nextByte == SipConstants.LF) {
                 int len = seq.length();
                 // Drop CR if we had a CRLF pair
-                if (len >= 1 && seq.charAtUnsafe(len - 1) == HttpConstants.CR) {
+                if (len >= 1 && seq.charAtUnsafe(len - 1) == SipConstants.CR) {
                     --size;
                     seq.setLength(len - 1);
                 }

@@ -13,4 +13,5 @@
     </root>
     <!--  控制 LoggingHandler 是否输出日志. info以上级别就会输出。  -->
     <logger name="com.dxp.sip.bus.handler" level="DEBUG"/>
+    <logger name="io.netty.handler.logging.LoggingHandler" level="DEBUG"/>
 </configuration>

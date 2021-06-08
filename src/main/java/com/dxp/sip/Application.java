@@ -47,8 +47,8 @@ public class Application {
                     @Override
                     protected void initChannel(NioDatagramChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new AbstractSipResponseEncoder())
-                                .addLast(new AbstractSipRequestEncoder())
+                                .addLast(new SipResponseEncoder())
+                                .addLast(new SipRequestEncoder())
                                 .addLast(new SipObjectUdpDecoder())
                                 .addLast(new SipObjectAggregator(8192))
                                 .addLast(LOGGING_HANDLER)
@@ -82,8 +82,8 @@ public class Application {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new AbstractSipResponseEncoder())
-                                .addLast(new AbstractSipRequestEncoder())
+                                .addLast(new SipResponseEncoder())
+                                .addLast(new SipRequestEncoder())
                                 .addLast(new SipObjectTcpDecoder())
                                 .addLast(new SipObjectAggregator(8192))
                                 .addLast(LOGGING_HANDLER)

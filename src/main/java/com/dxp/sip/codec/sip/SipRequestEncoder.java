@@ -11,7 +11,7 @@ import static io.netty.handler.codec.http.HttpConstants.SP;
  * a {@link ByteBuf}.
  * @author carzy
  */
-public class AbstractSipRequestEncoder extends AbstractSipObjectEncoder<SipRequest> {
+public class SipRequestEncoder extends AbstractSipObjectEncoder<SipRequest> {
 
     private static final char SLASH = '/';
     private static final char QUESTION_MARK = '?';
@@ -20,7 +20,7 @@ public class AbstractSipRequestEncoder extends AbstractSipObjectEncoder<SipReque
 
     @Override
     public boolean acceptOutboundMessage(Object msg) throws Exception {
-        return super.acceptOutboundMessage(msg) && !(msg instanceof SipResponse);
+        return super.acceptOutboundMessage(msg) && msg instanceof SipRequest;
     }
 
     @Override

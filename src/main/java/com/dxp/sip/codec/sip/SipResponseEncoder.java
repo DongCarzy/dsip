@@ -11,11 +11,11 @@ import static io.netty.handler.codec.http.HttpConstants.SP;
  * a {@link ByteBuf}.
  * @author carzy
  */
-public class AbstractSipResponseEncoder extends AbstractSipObjectEncoder<SipResponse> {
+public class SipResponseEncoder extends AbstractSipObjectEncoder<SipResponse> {
 
     @Override
     public boolean acceptOutboundMessage(Object msg) throws Exception {
-        return super.acceptOutboundMessage(msg) && !(msg instanceof SipRequest);
+        return super.acceptOutboundMessage(msg) && (msg instanceof SipResponse);
     }
 
     @Override

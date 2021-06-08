@@ -25,7 +25,7 @@ public class SipResponseEncoderTest {
                 .set(SipHeaderNames.USER_AGENT, "d-sip");
 
         EmbeddedChannel ch = new EmbeddedChannel(
-                new AbstractSipResponseEncoder(),
+                new SipResponseEncoder(),
                 new LoggingHandler(LogLevel.INFO)
         );
         ch.writeAndFlush(response);
